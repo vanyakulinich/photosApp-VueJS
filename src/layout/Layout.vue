@@ -1,16 +1,29 @@
 <template>
   <div>
-    <NavMenu/>
-    {{$route.params.id}}
+    <md-card>
+        <router-link tag="md-button" to="/main" class="md-raised md-primary">
+          Main
+        </router-link>
+        <router-link tag="md-button" to="/photos" class="md-raised md-primary">
+          Photos
+        </router-link>
+    </md-card>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import NavMenu from '../components/NavMenu.vue'
 export default {
   name: 'Layout',
-  components: {
-    NavMenu
-  }
 }
 </script>
+
+<style scoped>
+  .md-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+

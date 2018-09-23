@@ -1,20 +1,13 @@
 import Layout from '../layout/Layout.vue'
 import { Main, Photos } from '../pages'
 
-export const routeNames = [
-  {name: 'main', component: Main},
-  {name: 'photos', component: Photos}
-]
-
 const routes = [
-  {path: '/:id', component: Layout,
-    children: routeNames.map(route => {
-      return {
-        path: route.name,
-        component: {template: route.component}
-      }
-    })
+  {path: '/', component: Layout,
+    children: [
+      {path: 'main', component: Main},
+      {path: 'photos', component: Photos}
+    ]
   }
-]
+];
 
 export default routes;

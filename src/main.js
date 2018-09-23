@@ -5,14 +5,15 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import 'es6-promise/auto';
 
-import { default as routes } from './routes'
 import { store } from './store'
+import routes from './routes'
 
 Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  base: 'app'
 })
 
 Vue
