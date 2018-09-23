@@ -4,9 +4,10 @@
       photos page
     </h2>
     <div>
-      {{movies}}
+      {{test}}
       <button @click='sampleAction'>dispatch action</button>
       <button @click='backToDefault'>dispatch action to default</button>
+      <input type="text" v-on:input='dynamicInput'>
     </div>
   </div>
 </template>
@@ -15,12 +16,13 @@ import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Photos',
   computed: mapState({
-    movies: state => state.movies
+    test: state => state.test
   }),
   methods: {
     ...mapActions([
       'sampleAction',
-      'backToDefault'
+      'backToDefault',
+      'dynamicInput'
     ])
   }
 }

@@ -6,14 +6,18 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     type: 'no type',
-    movies: 'no movies'
+    movies: 'no movies',
+    test: 'initial state'
   },
   mutations: {
     addString(state) {
-      state.movies+=' mutation added'
+      state.test='mutation added'
     },
     defaultString(state) {
-      state.movies = 'no movies'
+      state.test = 'default state'
+    },
+    input(state, e) {
+      state.test = e.target.value
     }
   },
   actions: {
@@ -22,6 +26,9 @@ export const store = new Vuex.Store({
     },
     backToDefault({commit}) {
       commit('defaultString')
+    },
+    dynamicInput({commit}, e) {
+      commit('input', e)
     }
   }
 })
