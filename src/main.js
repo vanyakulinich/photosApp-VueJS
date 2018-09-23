@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
+import Vuex from 'vuex';
 import 'vue-material/dist/vue-material.css'
+import 'es6-promise/auto';
 
 import { default as routes } from './routes'
 
@@ -13,8 +15,10 @@ const router = new VueRouter({
   mode: 'history'
 })
 
-Vue.use(VueRouter)
-Vue.use(VueMaterial)
+Vue
+  .use(VueRouter)
+  .use(VueMaterial)
+  .use(Vuex)
 
 new Vue({
   router,
