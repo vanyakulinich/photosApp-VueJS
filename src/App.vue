@@ -6,10 +6,9 @@
 
 <script>
 import Layout from './layout/Layout.vue'
-import store from './store'
+
 export default {
   name: 'app',
-  store,
   components: {
     Layout
   }, 

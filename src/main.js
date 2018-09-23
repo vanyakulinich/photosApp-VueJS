@@ -2,11 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
-import Vuex from 'vuex';
 import 'vue-material/dist/vue-material.css'
 import 'es6-promise/auto';
 
 import { default as routes } from './routes'
+import { store } from './store'
 
 Vue.config.productionTip = false
 
@@ -18,9 +18,9 @@ const router = new VueRouter({
 Vue
   .use(VueRouter)
   .use(VueMaterial)
-  .use(Vuex)
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
