@@ -1,21 +1,6 @@
-# photos-app
+## Photos-app-VueJS
+### VueJS app for displaying pictures from Pixabay
+### Vue + VueRouter + Vuex
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
+#### Project setup:
+#### yarn install => yarn serve (app will be on port 8080)
