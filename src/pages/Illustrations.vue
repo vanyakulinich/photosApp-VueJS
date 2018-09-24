@@ -1,11 +1,9 @@
 <template>
-  <h1>
-    Main page
-  </h1>
+  <div>Illistrations page</div>
 </template>
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Illustrations'
 }
 </script>

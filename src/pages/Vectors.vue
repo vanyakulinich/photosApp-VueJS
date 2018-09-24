@@ -1,11 +1,9 @@
 <template>
-  <h1>
-    Main page
-  </h1>
+  <div>Vector Graphics page</div>
 </template>
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Vectors'
 }
 </script>

@@ -1,29 +1,34 @@
 <template>
   <div>
-    <md-card>
-        <router-link tag="md-button" to="/main" class="md-raised md-primary">
-          Main
-        </router-link>
-        <router-link tag="md-button" to="/photos" class="md-raised md-primary">
-          Photos
-        </router-link>
-    </md-card>
+    <router-link 
+      v-for="route in routes"
+      :key='route'
+      tag="md-button" 
+      :to='route'
+      class="md-raised md-dense"
+    >
+      <span class='menu'>{{route}}</span>
+    </router-link>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import {routesNames} from '../routes'
 export default {
   name: 'Layout',
+  data: () => ({
+    routes: routesNames
+  })
 }
 </script>
 
 <style scoped>
-  .md-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  .menu {
+    color: rgba(48, 48, 48, 0.7)
+  }
+  .menu:hover {
+    color: rgba(48, 48, 48, 0.9)
   }
 </style>
 
