@@ -22,6 +22,9 @@ export default {
 <style scopped>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
   }
   .md-card-header {
     display: flex;
