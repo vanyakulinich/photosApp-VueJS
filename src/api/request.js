@@ -1,9 +1,11 @@
+/* eslint-disable */
 import {api} from './axiosInstance';
 
 const apiRequest = (requestDetails) => {
   const detailsArray = requestDetails ?
-    Object.entries(requestDetails).forEach(el => el.join('=')) : null;
-  const details = detailsArray ? `&${detailsArray.join('&')}` : '';
+    Object.entries(requestDetails).map(el => el.join('=')) : null;
+  const details = detailsArray ? detailsArray.join('&') : '';
+  console.log(details)
   return api
           .get(details)
           .then(response => response.data.hits)
