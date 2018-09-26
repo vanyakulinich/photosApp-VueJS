@@ -39,6 +39,15 @@ export default {
   .wrap {
     height: 100%;
   }
+  .md-card::-webkit-scrollbar {
+    width: 2px;
+  }
+  .md-card::-webkit-scrollbar-track {
+    background: rgba(48, 48, 48, 0.1);
+  }
+  .md-card::-webkit-scrollbar-thumb {
+    background: rgba(48, 48, 48, 0.2); 
+  }
   .md-card {
     height: 80%;
     width: 90%;
