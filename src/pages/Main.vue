@@ -28,7 +28,7 @@ import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Main',
   data: () => ({
-    selectedPhoto: '<md-spinner md-indeterminate v-else-if="!data"></md-spinner>',
+    selectedPhoto: '<md-spinner md-indeterminate></md-spinner>',
     modalButton: 'x'
   }),
   mounted() {
