@@ -33,9 +33,11 @@ export default {
   }),
   mounted() {
      this.api({
-       editors_choice: true, 
-       per_page: 50,
-       order: 'latest'
+       params: {
+          editors_choice: true, 
+          per_page: 50,
+          order: 'latest'
+       }
      })
   },
   methods: {
