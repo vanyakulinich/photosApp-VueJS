@@ -1,22 +1,40 @@
 <template>
   <div>
     <h2>
-      <!-- {{filter ? filter : 'All pictures'}} -->
-      temporary header
+      {{filter ? `${filter}s` : 'All pictures'}}
     </h2>
     <md-card>
-      <md-card-header>Pictures filters</md-card-header>
+      <md-card-header>Filter to display images</md-card-header>
       <md-card-content>
         <md-switch 
           v-bind:value="filters['photo']" 
-          v-model="filters['photo']" 
-          id="photos" 
-          name="photo"
+          @change="applyFilterPhoto"
         >
-          photos
+          Photos
         </md-switch>
-        <md-switch v-bind:value="filters['illustration']" v-model="filters['illustration']" id="illustrations" name="illustration" class="md-primary">illustrations</md-switch>
-        <md-switch v-bind:value="filters['vector']" v-model="filters['vector']" id="vectors" name="vector" class="md-warn">vectors</md-switch>
+        <md-switch 
+          v-bind:value="filters['illustration']" 
+          @change="applyFilterIllustration" 
+          class="md-primary"
+        >
+          illustrations
+        </md-switch>
+        <md-switch 
+          v-bind:value="filters['vector']" 
+          @change="applyFilterVector" 
+          class="md-warn"
+        >
+          vectors
+        </md-switch>
+      </md-card-content>
+      <md-card-content v-if="filter">
+        <img 
+          class="image"
+          v-for="item in data" 
+          :key='item.id' 
+          :src='item.previewURL'
+          :name='item.webformatURL'
+        >
       </md-card-content>
     </md-card>
   </div>
@@ -26,45 +44,29 @@
 import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Photos',
-  data: () => ({
-    // filters: {
-    //   photo: false,
-    //   illustration: false,
-    //   vector: false,
-    // },
+  data: () =>({
+    filter: null
   }),
   methods: {
     ...mapActions({
       api: 'api'
     }),
-    manageFilters: function(filters) {
-      const filterToApply = filters.find(el => el[1] === true)
-      const newFilters = {...filters}
-      if (filterToApply) {
-         for ( const key in newFilters) {
-          if (key !== filterToApply[0]) {
-            newFilters[key] = false;
-          }
-        }
-        console.log(newFilters)
-      }
-     
+    applyFilterPhoto: function(e) {this.applyFilter('photo', e)},
+    applyFilterIllustration: function(e) {this.applyFilter('illustration', e)},
+    applyFilterVector: function(e) {this.applyFilter('vector', e)},
+    applyFilter: function(filter, value) {
+      const buffer = {...this.filters}
+      for(const key in buffer) buffer[key] = false;
+      buffer[filter] = value;
+      this.filter = filter;
       this.api({
         params: {
-          image_type: filterToApply ? filterToApply[0] : 'all',
+          image_type: value ? filter : 'all',
+          per_page: 50
         },
-        filters: newFilters ? newFilters : null
+        filters: {...buffer}
       })
     },
-  },
-  watch: {
-    filters: {
-      handler: function(data) {
-        const filters = Object.entries(data); 
-        this.manageFilters(filters);
-      },
-      deep: true
-    }
   },
   computed: mapState({
     data: state => state.data,
@@ -72,3 +74,9 @@ export default {
   }),
 }
 </script>
+
+<style scoped>
+  h2 {
+    text-transform: uppercase;
+  }
+</style>

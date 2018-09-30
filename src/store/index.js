@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
   mutations: {
     pictures(state, {data, filters}) {
       state.data = data
-      state.filters = filters ? filters : {...state.filters}
+      state.filters = filters ? filters : state.filters
     }
   },
   actions: {
