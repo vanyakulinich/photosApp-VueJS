@@ -1,7 +1,7 @@
 <template>
   <div class="imageWrap">
     <h3 class="header">
-      Latest photos from Pixabay
+      Latest 50 photos from Pixabay
     </h3>
     <div v-if="data" class="imgContainer">
       <img 

@@ -4,7 +4,7 @@
       {{filter ? `${filter}s` : 'All pictures'}}
     </h2>
     <md-card>
-      <md-card-header>Filter to display images</md-card-header>
+      <md-card-header>Filters to display 50 items</md-card-header>
       <md-card-content>
         <md-switch 
           v-bind:value="filters['photo']" 
@@ -34,7 +34,10 @@
           :key='item.id' 
           :src='item.previewURL'
           :name='item.webformatURL'
-        >
+        />
+      </md-card-content>
+      <md-card-content v-else>
+        Please apply a filter
       </md-card-content>
     </md-card>
   </div>
@@ -58,7 +61,7 @@ export default {
       const buffer = {...this.filters}
       for(const key in buffer) buffer[key] = false;
       buffer[filter] = value;
-      this.filter = filter;
+      this.filter = value ? filter : null;
       this.api({
         params: {
           image_type: value ? filter : 'all',
@@ -78,5 +81,8 @@ export default {
 <style scoped>
   h2 {
     text-transform: uppercase;
+  }
+  img {
+    margin: 5px;
   }
 </style>
